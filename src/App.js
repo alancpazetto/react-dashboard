@@ -10,7 +10,6 @@ class App extends React.Component {
   }
 
   onClickAvatar() {
-    console.log('click');
     this.setState({
       isSidebarOpen: !this.state.isSidebarOpen
     });
@@ -18,14 +17,14 @@ class App extends React.Component {
 
   render() {
 
-    let sidebarClasses = ['App__sidebar'];
+    let appClasses = ['App'];
     if (this.state.isSidebarOpen) {
-      sidebarClasses.push('App__sidebar--open');
+      appClasses.push('App--sidebar-open');
     }
 
-    return <div className="App">
+    return <div className={appClasses.join(' ')}>
       
-      <div className={sidebarClasses.join(' ')}>
+      <div className="App__sidebar">
 
         <div className="App__sidebar__header" onClick={() => this.onClickAvatar()}>
           <Avatar
@@ -38,25 +37,25 @@ class App extends React.Component {
           <nav>
             <ul>
               <li>
-                <a href="#">
+                <a href="#foo">
                   <i className="fa fa-user"></i>
                   <span className="hidden">Users</span>
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="#foo">
                   <i className="fa fa-briefcase"></i>
                   <span className="hidden">Leads</span>
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="#foo">
                   <i className="fa fa-chart-line"></i>
                   <span className="hidden">Analytics</span>
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="#foo">
                   <i className="fa fa-cog"></i>
                   <span className="hidden">Settings</span>
                 </a>
@@ -66,7 +65,7 @@ class App extends React.Component {
         </div>
 
         <div className="App__sidebar__footer">
-          <a href="#">
+          <a href="#foo">
             <i className="fa fa-sign-out-alt"></i>
             <span className="hidden">Log out</span>
           </a>
