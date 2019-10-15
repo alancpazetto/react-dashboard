@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Dashboard based on this Dribble: https://dribbble.com/shots/7079317-Payment-Dashboard/attachments/80732?mode=media
+
 ## Available Scripts
 
 In the project directory, you can run:
