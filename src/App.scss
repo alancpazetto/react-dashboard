@@ -1,3 +1,7 @@
+$sidebar-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+$menu-item-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+$menu-item-hover-transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+
 .App {
   position: relative;
   width: 100%;
@@ -7,8 +11,23 @@
     .App__sidebar {
       width: 20vw;
 
+      ul li a,
+      .App__sidebar__footer a {
+        transform: translateX(-30px);
+      }
+
+      ul li {
+        @for $i from 1 through 10 {
+          &:nth-child(#{$i}n) a span {
+            transition-delay: #{$i * 0.05}s;
+          }
+        }
+      }
+
       .hidden {
-        display: block;
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(0px);
       }
     }
 
@@ -34,7 +53,7 @@
     align-items: center;
     z-index: 1;
     color: #ffffff;
-    transition: all 1s ease-in-out; // TODO: Implement design system and beautiful easings
+    transition: $sidebar-transition; // TODO: Implement design system and beautiful easings
 
     &__menu {
       ul {
@@ -45,6 +64,7 @@
         flex-direction: column;
 
         li {
+
           a {
             padding: 10px 0;
             color: #ffffff;
@@ -55,6 +75,8 @@
             opacity: .8;
             line-height: 20px;
             text-decoration: none;
+            position: relative;
+            transition: $menu-item-transition;
 
             i {
               margin-right: 10px;
@@ -62,10 +84,14 @@
 
             span {
               font-size: 14px;
+              position: absolute;
+              left: 30px;
+              white-space: nowrap;
             }
 
             &:hover {
               opacity: 1;
+              transition: $menu-item-hover-transition;
             }
           }
         }
@@ -83,6 +109,8 @@
         opacity: .8;
         line-height: 20px;
         text-decoration: none;
+        position: relative;
+        transition: $menu-item-transition; // TODO: Implement design system and beautiful easings
 
         i {
           margin-right: 10px;
@@ -90,12 +118,18 @@
 
         span {
           font-size: 14px;
+          position: absolute;
+          left: 30px;
+          white-space: nowrap;
         }
       }
     }
 
     .hidden {
-      display: none;
+      visibility: hidden;
+      opacity: 0;
+      transition: $menu-item-transition;
+      transform: translateX(-10px);
     }
   }
 
@@ -112,6 +146,6 @@
     background: #ffffff;
     overflow-y: auto;
     padding-left: 2vw;
-    transition: all 1s ease-in-out; // TODO: Implement design system and beautiful easings
+    transition: $sidebar-transition; // TODO: Implement design system and beautiful easings
   }
 }
