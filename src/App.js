@@ -1,19 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.scss';
 import Avatar from './components/Avatar/Avatar';
+import Header from './components/Header/Header';
 
 class App extends React.Component {
   
   state = {
     isSidebarOpen: false
-  }
-
-  onClickAvatar() {
-    this.setState({
-      isSidebarOpen: !this.state.isSidebarOpen
-    });
-  }
+  };
 
   render() {
 
@@ -26,7 +21,7 @@ class App extends React.Component {
       
       <div className="App__sidebar">
 
-        <div className="App__sidebar__header" onClick={() => this.onClickAvatar()}>
+        <div className="App__sidebar__header">
           <Avatar
             avatar="https://randomuser.me/api/portraits/men/78.jpg"
             name="Gerald Wolfe"
@@ -73,7 +68,12 @@ class App extends React.Component {
       </div>
 
       <div className="App__content">
-        <header className="App-header">
+        <Header
+          isMenuOpen={this.state.isSidebarOpen}
+          onClickHamburger={() => this.setState({ isSidebarOpen: !this.state.isSidebarOpen })}></Header>
+
+
+        {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
@@ -85,7 +85,7 @@ class App extends React.Component {
             rel="noopener noreferrer">
             Learn React
           </a>
-        </header>
+        </header> */}
       </div>
 
 
