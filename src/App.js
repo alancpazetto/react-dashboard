@@ -1,8 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 // import logo from './logo.svg';
 import './App.scss';
 import Avatar from './components/Avatar/Avatar';
 import Header from './components/Header/Header';
+import Card from './components/Card/Card';
 
 class App extends React.Component {
   
@@ -18,7 +20,7 @@ class App extends React.Component {
     }
 
     return <div className={appClasses.join(' ')}>
-      
+    
       <div className="App__sidebar">
 
         <div className="App__sidebar__header">
@@ -68,31 +70,24 @@ class App extends React.Component {
       </div>
 
       <div className="App__content">
-        <Header
-          isMenuOpen={this.state.isSidebarOpen}
-          onClickHamburger={() => this.setState({ isSidebarOpen: !this.state.isSidebarOpen })}></Header>
-
-
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer">
-            Learn React
-          </a>
-        </header> */}
+        <div className="App__content__center">
+          <Header
+            isMenuOpen={this.state.isSidebarOpen}
+            onClickHamburger={() => this.setState({ isSidebarOpen: !this.state.isSidebarOpen })}></Header>
+        </div>
+        <div className="App__content__right-sidebar">
+          <h2>Your credit cards</h2>
+          {this.props.cards.map(card => {
+            return <Card limitUsage={card.limitUsage} name={card.name}></Card>;
+          })}
+        </div>
       </div>
-
-
-
-
     </div>
   }
 }
 
-export default App;
+const mapStateToProps = store => ({
+  cards: store.cards,
+});
+
+export default connect(mapStateToProps)(App);

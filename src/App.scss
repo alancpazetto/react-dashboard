@@ -146,8 +146,22 @@ $menu-item-hover-transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
     border-bottom-left-radius: 20px;
     background: #ffffff;
     overflow-y: auto;
-    padding-left: 2vw;
     transition: $sidebar-transition;
     background: #fefefe;
+    overflow-y: scroll;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+
+    &__center {
+      flex: 1 1 auto;
+      padding: 0 2vw;
+    }
+    
+    &__right-sidebar {
+      background: #efefef;
+      width: 300px;
+      padding: 50px 20px;
+    }
   }
 }
