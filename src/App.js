@@ -5,6 +5,7 @@ import './App.scss';
 import Avatar from './components/Avatar/Avatar';
 import Header from './components/Header/Header';
 import Card from './components/Card/Card';
+import Queue from './components/Queue/Queue';
 
 class App extends React.Component {
   
@@ -74,12 +75,21 @@ class App extends React.Component {
           <Header
             isMenuOpen={this.state.isSidebarOpen}
             onClickHamburger={() => this.setState({ isSidebarOpen: !this.state.isSidebarOpen })}></Header>
+
+          <div className="App__content__center__queue">
+            <Queue />
+          </div>
+
         </div>
         <div className="App__content__right-sidebar">
-          <h2>Your credit cards</h2>
-          {this.props.cards.map(card => {
-            return <Card limitUsage={card.limitUsage} name={card.name}></Card>;
-          })}
+          <h2>Inside Customers</h2>
+
+          <div className="App__content__right-sidebar__active-users">
+            {this.props.insideCustomers.map(user => {
+              return <Avatar avatar={user.avatar} />;
+            })}
+          </div>
+
         </div>
       </div>
     </div>
@@ -87,7 +97,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = store => ({
-  cards: store.cards,
+  insideCustomers: store.insideCustomers,
 });
 
 export default connect(mapStateToProps)(App);
