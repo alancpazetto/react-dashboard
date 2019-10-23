@@ -32,8 +32,12 @@ class QueueItem extends Component {
           </div>
 
           <div className="QueueItem__details__actions">
-            <Button>Remove from queue</Button>
-            <Button>Call {this.props.details.user.name}</Button>
+            <div className="remove">
+              <Button onClick={() => this.props.onRemove(this.props.details)} color="danger">Remove from queue</Button>
+            </div>
+            <div className="call">
+              <Button onClick={() => this.props.onCall(this.props.details)}>Call {this.props.details.user.name}</Button>
+            </div>
           </div>
         </div>
       </div>

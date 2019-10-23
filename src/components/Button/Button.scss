@@ -1,4 +1,21 @@
 .CustomButton {
-  background: red;
+  background: #7E26DE;
   border: none;
+  color: #ffffff;
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    background: #8628EB;
+  }
+
+  &--danger {
+    background: #E0302C;
+    &:hover {
+      background: rgb(214, 54, 51);
+    }
+  }
 }

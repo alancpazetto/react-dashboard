@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import logo from './logo.svg';
 import './App.scss';
 import Avatar from './components/Avatar/Avatar';
 import Header from './components/Header/Header';
-import Card from './components/Card/Card';
-import Queue from './components/Queue/Queue';
+import Dashboard from './components/Dashboard/Dashboard';
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import Users from './components/Users/Users';
+import { Link } from 'react-router-dom';
 
 class App extends React.Component {
   
@@ -35,10 +36,11 @@ class App extends React.Component {
           <nav>
             <ul>
               <li>
-                <a href="#foo">
+                <Link to="/users">
                   <i className="fa fa-user"></i>
                   <span className="hidden">Users</span>
-                </a>
+                </Link>
+
               </li>
               <li>
                 <a href="#foo">
@@ -76,9 +78,11 @@ class App extends React.Component {
             isMenuOpen={this.state.isSidebarOpen}
             onClickHamburger={() => this.setState({ isSidebarOpen: !this.state.isSidebarOpen })}></Header>
 
-          <div className="App__content__center__queue">
-            <Queue />
-          </div>
+          
+          <Switch>
+            <Route path="/" exact={true} component={Dashboard} />
+            <Route path="/users" component={Users} />
+          </Switch>
 
         </div>
         <div className="App__content__right-sidebar">
